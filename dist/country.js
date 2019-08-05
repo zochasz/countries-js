@@ -1,0 +1,4 @@
+"use strict";var _utils=require("./utils");Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=exports.activeProps=void 0;function _classCallCheck(a,b){if(!(a instanceof b))throw new TypeError("Cannot call a class as a function")}// Propety names which are useful
+// for filtering countries set.
+var activeProps=["isoA2","isoA3","isoN3","region","subregion"];exports.activeProps=activeProps;var Country=function a(b){var c=b.name,d=b.isoA2,e=b.isoA3,f=b.isoN3,g=b.region,h=void 0===g?"":g,i=b.subregion,j=void 0===i?"":i,k=b.phoneCode,l=void 0===k?"":k,m=b.translations;_classCallCheck(this,a),this.name=c,this.isoA2=d,this.isoA3=e,this.isoN3=f,this.region=h,this.subregion=j,this.phoneCode=l,this.translations=m,(0,_utils.deepFreeze)(this)};exports["default"]=Country;
+//# sourceMappingURL=country.js.map

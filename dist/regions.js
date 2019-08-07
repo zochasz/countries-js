@@ -2,4 +2,3 @@
 // their main purpose is to act as shortcuts in filtering `Countries`.
 // https://en.wikipedia.org/wiki/United_Nations_geoscheme
 var Africa="Africa",Americas="Americas",Asia="Asia",Europe="Europe",Oceania="Oceania",Polar="Polar",_default={Africa:"Africa",Americas:Americas,Asia:Asia,Europe:Europe,Oceania:Oceania,Polar:Polar};exports["default"]=_default;
-//# sourceMappingURL=regions.js.map

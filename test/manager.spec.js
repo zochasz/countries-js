@@ -1,5 +1,8 @@
 import { expect } from 'chai'
-import { countries, regions, subregions } from '../src'
+import { data, regions, subregions, Country, createManager } from '..'
+
+const Manager = createManager(Country)
+const countries = new Manager(data.map(v => new Country(v)))
 
 const { Africa, Europe } = regions
 const { EasternEurope, MiddleAfrica } = subregions

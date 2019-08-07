@@ -1,10 +1,9 @@
 import { deepFreeze } from './utils'
 
-// Following property names are allowed
-// to be used in filtering `Countries`.
-export const ActiveProps = ['isoA2', 'isoA3', 'isoN3', 'region', 'subregion']
-
 export default class Country {
+  // Following properties are allowed to be used in filtering `Countries`.
+  static activeProps = ['isoA2', 'isoA3', 'isoN3', 'region', 'subregion']
+
   constructor({
     name,
     isoA2,

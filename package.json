@@ -12,6 +12,10 @@
   },
   "license": "MPL-2.0",
   "private": false,
+  "keywords": [
+    "iso-3166",
+    "countries"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",

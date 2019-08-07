@@ -1,7 +1,8 @@
+import data from '../data/countries'
 import { deepFreeze } from './utils'
-import { activeProps } from './country'
+import Country, { ActiveProps } from './country'
 
-export default class Countries {
+class Countries {
   constructor(countries) {
     this.countries = countries
     deepFreeze(this)
@@ -11,8 +12,16 @@ export default class Countries {
     return this.countries
   }
 
+  get first() {
+    return this.countries[0]
+  }
+
+  get last() {
+    return this.countries[this.countries.length - 1]
+  }
+
   _checkPropExists(propName) {
-    if (activeProps.indexOf(propName) < 0) {
+    if (ActiveProps.indexOf(propName) < 0) {
       throw new Error(`Country\'s property ${propName} is not supported.`)
     }
   }
@@ -44,3 +53,11 @@ export default class Countries {
     )
   }
 }
+
+export default (() => {
+  let instance
+  if (!instance) {
+    instance = new Countries(data.map(v => new Country(v)))
+  }
+  return instance
+})()

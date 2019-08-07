@@ -1,47 +1,51 @@
-export const AustraliaAndNewZealand = 'Australia and New Zealand'
-export const Caribbean = 'Caribbean'
-export const CentralAmerica = 'Central America'
-export const CentralAsia = 'Central Asia'
-export const EasternAfrica = 'Eastern Africa'
-export const EasternAsia = 'Eastern Asia'
-export const EasternEurope = 'Eastern Europe'
-export const Melanesia = 'Melanesia'
-export const Micronesia = 'Micronesia'
-export const MiddleAfrica = 'Middle Africa'
-export const NorthernAfrica = 'Northern Africa'
-export const NorthernAmerica = 'Northern America'
-export const NorthernEurope = 'Northern Europe'
-export const Polynesia = 'Polynesia'
-export const SouthAmerica = 'South America'
-export const SouthEasternAsia = 'South-Eastern Asia'
-export const SouthernAfrica = 'Southern Africa'
-export const SouthernAsia = 'Southern Asia'
-export const SouthernEurope = 'Southern Europe'
-export const WesternAfrica = 'Western Africa'
-export const WesternAsia = 'Western Asia'
-export const WesternEurope = 'Western Europe'
+// The following variables specifie subregions of the Planet Earth,
+// their main purpose is to act as shortcuts in filtering `Countries`.
+// https://en.wikipedia.org/wiki/United_Nations_geoscheme
+
+const AustraliaAndNewZealand = 'Australia and New Zealand'
+const Caribbean = 'Caribbean'
+const CentralAmerica = 'Central America'
+const CentralAsia = 'Central Asia'
+const EasternAfrica = 'Eastern Africa'
+const EasternAsia = 'Eastern Asia'
+const EasternEurope = 'Eastern Europe'
+const Melanesia = 'Melanesia'
+const Micronesia = 'Micronesia'
+const MiddleAfrica = 'Middle Africa'
+const NorthernAfrica = 'Northern Africa'
+const NorthernAmerica = 'Northern America'
+const NorthernEurope = 'Northern Europe'
+const Polynesia = 'Polynesia'
+const SouthAmerica = 'South America'
+const SouthEasternAsia = 'South-Eastern Asia'
+const SouthernAfrica = 'Southern Africa'
+const SouthernAsia = 'Southern Asia'
+const SouthernEurope = 'Southern Europe'
+const WesternAfrica = 'Western Africa'
+const WesternAsia = 'Western Asia'
+const WesternEurope = 'Western Europe'
 
 export default {
-  AustraliaAndNewZealand: AustraliaAndNewZealand,
-  Caribbean: Caribbean,
-  CentralAmerica: CentralAmerica,
-  CentralAsia: CentralAsia,
-  EasternAfrica: EasternAfrica,
-  EasternAsia: EasternAsia,
-  EasternEurope: EasternEurope,
-  Melanesia: Melanesia,
-  Micronesia: Micronesia,
-  MiddleAfrica: MiddleAfrica,
-  NorthernAfrica: NorthernAfrica,
-  NorthernAmerica: NorthernAmerica,
-  NorthernEurope: NorthernEurope,
-  Polynesia: Polynesia,
-  SouthAmerica: SouthAmerica,
-  SouthEasternAsia: SouthEasternAsia,
-  SouthernAfrica: SouthernAfrica,
-  SouthernAsia: SouthernAsia,
-  SouthernEurope: SouthernEurope,
-  WesternAfrica: WesternAfrica,
-  WesternAsia: WesternAsia,
-  WesternEurope: WesternEurope,
+  AustraliaAndNewZealand,
+  Caribbean,
+  CentralAmerica,
+  CentralAsia,
+  EasternAfrica,
+  EasternAsia,
+  EasternEurope,
+  Melanesia,
+  Micronesia,
+  MiddleAfrica,
+  NorthernAfrica,
+  NorthernAmerica,
+  NorthernEurope,
+  Polynesia,
+  SouthAmerica,
+  SouthEasternAsia,
+  SouthernAfrica,
+  SouthernAsia,
+  SouthernEurope,
+  WesternAfrica,
+  WesternAsia,
+  WesternEurope,
 }

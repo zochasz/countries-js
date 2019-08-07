@@ -1,13 +1,17 @@
 {
   "name": "countries-js",
-  "main": "./dist/index.js",
   "version": "1.0.0",
-  "license": "MPL-2.0",
+  "description": "Comprehensive list of ISO-3166 countries",
+  "repository": "https://github.com/aktitarov/countries-js.git",
+  "author": "Anatoly Ktitarov <https://github.com/aktitarov>",
+  "main": "./dist/index.js",
   "scripts": {
     "lint": "prettier --write '**/*.js'",
     "test": "./node_modules/.bin/mocha --require @babel/register",
     "build": "babel src --out-dir ./dist --source-maps"
   },
+  "license": "MPL-2.0",
+  "private": false,
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",

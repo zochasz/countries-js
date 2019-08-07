@@ -1,201 +1,182 @@
 import { expect } from 'chai'
-import data from '../data/countries'
-import Country from '../src/country'
-import Countries from '../src/countries'
-import { Africa, Europe } from '../src/regions'
-import { EasternEurope, MiddleAfrica } from '../src/subregions'
+import { countries, regions, subregions } from '../src'
 
-describe('Countries test', () => {
-  const countries = new Countries(data.map(i => new Country(i)))
+const { Africa, Europe } = regions
+const { EasternEurope, MiddleAfrica } = subregions
 
-  describe('Can include iso-3166 alpha-2 codes', () => {
-    it('Should return countries with alpha-2 codes AG, KZ, UG', () => {
-      const filtered = countries.include('isoA2', ['AG', 'KZ', 'UG'])
-      expect(filtered.all.map(v => v.isoA2))
+describe('Countries tests', () => {
+  describe('Can filter by including countries with specific iso-3166 alpha-2 codes', () => {
+    it('Must return only countries with iso-3166 alpha-2 codes equal to AG, KZ, UG', () => {
+      expect(
+        countries.include('isoA2', ['AG', 'KZ', 'UG']).all.map(v => v.isoA2)
+      )
         .to.be.an('array')
-        .that.includes('AG')
-        .includes('KZ')
-        .includes('UG')
+        .that.include.members(['AG', 'KZ', 'UG'])
     })
   })
-
-  describe('Can exclude iso-3166 alpha-2 codes', () => {
-    it('Should return countries without alpha-2 codes AG, KZ, UG', () => {
-      const filtered = countries.exclude('isoA2', ['AG', 'KZ', 'UG'])
-      expect(filtered.all.map(v => v.isoA2))
+  describe('Can filter by excluding countries with specific iso-3166 alpha-2 codes', () => {
+    it('Must return only countries with iso-3166 alpha-2 codes not equal to AG, KZ, UG', () => {
+      expect(
+        countries.exclude('isoA2', ['AG', 'KZ', 'UG']).all.map(v => v.isoA2)
+      )
         .to.be.an('array')
-        .that.not.includes('AG')
-        .not.includes('KZ')
-        .not.includes('UG')
+        .that.not.include.members(['AG', 'KZ', 'UG'])
     })
   })
-
-  describe('Can include iso-3166 alpha-3 codes', () => {
-    it('Should return countries with alpha-3 codes ATA, AUS, AIA', () => {
-      const filtered = countries.include('isoA3', ['ATA', 'AUS', 'AIA'])
-      expect(filtered.all.map(v => v.isoA3))
+  describe('Can filter by including countries with specific iso-3166 alpha-3 codes', () => {
+    it('Must return only countries with iso-3166 alpha-3 codes equal to ATA, AUS, AIA', () => {
+      expect(
+        countries.include('isoA3', ['ATA', 'AUS', 'AIA']).all.map(v => v.isoA3)
+      )
         .to.be.an('array')
-        .that.includes('ATA')
-        .includes('AUS')
-        .includes('AIA')
+        .that.include.members(['ATA', 'AUS', 'AIA'])
     })
   })
-
-  describe('Can exclude iso-3166 alpha-3 codes', () => {
-    it('Should return countries without alpha-3 codes ATA, AUS, AIA', () => {
-      const filtered = countries.exclude('isoA3', ['ATA', 'AUS', 'AIA'])
-      expect(filtered.all.map(v => v.isoA3))
+  describe('Can filter by excluding countries with specific iso-3166 alpha-3 codes', () => {
+    it('Must return only countries with iso-3166 alpha-3 codes not equal to ATA, AUS, AIA', () => {
+      expect(
+        countries.exclude('isoA3', ['ATA', 'AUS', 'AIA']).all.map(v => v.isoA3)
+      )
         .to.be.an('array')
-        .that.not.includes('ATA')
-        .not.includes('AUS')
-        .not.includes('AIA')
+        .that.not.include.members(['ATA', 'AUS', 'AIA'])
     })
   })
-
-  describe('Can include iso-3166 numeric-3 codes', () => {
-    it('Should return countries with numeric-3 codes 016, 854, 108', () => {
-      const filtered = countries.include('isoN3', ['016', '854', '108'])
-      expect(filtered.all.map(v => v.isoN3))
+  describe('Can filter by including countries with specific iso-3166 numeric codes', () => {
+    it('Must return only countries with iso-3166 numeric codes equal to 016, 854, 108', () => {
+      expect(
+        countries.include('isoN3', ['016', '854', '108']).all.map(v => v.isoN3)
+      )
         .to.be.an('array')
-        .that.includes('016')
-        .includes('854')
-        .includes('108')
+        .that.include.members(['016', '854', '108'])
     })
   })
-
-  describe('Can exclude iso-3166 numeric-3 codes', () => {
-    it('Should return countries without numeric-3 codes 016, 854, 108', () => {
-      const filtered = countries.exclude('isoN3', ['016', '854', '108'])
-      expect(filtered.all.map(v => v.isoN3))
+  describe('Can filter by excluding countries with specific iso-3166 numeric codes', () => {
+    it('Must return only countries with iso-3166 numeric codes not equal to 016, 854, 108', () => {
+      expect(
+        countries.exclude('isoN3', ['016', '854', '108']).all.map(v => v.isoN3)
+      )
         .to.be.an('array')
-        .that.not.includes('016')
-        .not.includes('854')
-        .not.includes('108')
+        .that.not.include.members(['016', '854', '108'])
     })
   })
-
-  describe('Can include regions', () => {
-    it('Should return countries within Europe and Africa', () => {
-      const filtered = countries.include('region', [Africa, Europe])
-      expect(Array.from(new Set(filtered.all.map(v => v.region))))
+  describe('Can filter by including countries located in specific regions', () => {
+    it('Must return only countries located in Europe and Africa', () => {
+      expect(
+        Array.from(
+          new Set(
+            countries.include('region', [Europe, Africa]).all.map(v => v.region)
+          )
+        )
+      )
         .to.be.an('array')
-        .that.includes(Europe)
-        .includes(Africa)
+        .that.include.members([Europe, Africa])
     })
   })
-
-  describe('Can exclude regions', () => {
-    it('Should return countries outside of Europe and Africa', () => {
-      const filtered = countries.exclude('region', [Africa, Europe])
-      expect(Array.from(new Set(filtered.all.map(v => v.region))))
+  describe('Can filter by excluding countries located in specific regions', () => {
+    it('Must return only countries not located in Europe and Africa', () => {
+      expect(
+        Array.from(
+          new Set(
+            countries.exclude('region', [Europe, Africa]).all.map(v => v.region)
+          )
+        )
+      )
         .to.be.an('array')
-        .that.not.includes(Europe)
-        .not.includes(Africa)
+        .that.not.include.members([Europe, Africa])
     })
   })
-
-  describe('Can include subregions', () => {
-    it('Should return countries within Eastern Europe and Middle Africa', () => {
-      const filtered = countries.include('subregion', [
-        EasternEurope,
-        MiddleAfrica,
-      ])
-      expect(Array.from(new Set(filtered.all.map(v => v.subregion))))
+  describe('Can filter by including countries located in specific subregion', () => {
+    it('Must return only countries located in Eastern Europe and Middle Africa', () => {
+      expect(
+        Array.from(
+          new Set(
+            countries
+              .include('subregion', [EasternEurope, MiddleAfrica])
+              .all.map(v => v.subregion)
+          )
+        )
+      )
         .to.be.an('array')
-        .that.includes(EasternEurope)
-        .includes(MiddleAfrica)
+        .that.include.members([EasternEurope, MiddleAfrica])
     })
   })
-
-  describe('Can exclude subregions', () => {
-    it('Should return countries outside of Eastern Europe and Middle Africa', () => {
-      const filtered = countries.exclude('subregion', [
-        EasternEurope,
-        MiddleAfrica,
-      ])
-      expect(Array.from(new Set(filtered.all.map(v => v.subregion))))
+  describe('Can filter by excluding countries located in specific subregion', () => {
+    it('Must return only countries not located in Eastern Europe and Middle Africa', () => {
+      expect(
+        Array.from(
+          new Set(
+            countries
+              .exclude('subregion', [EasternEurope, MiddleAfrica])
+              .all.map(v => v.subregion)
+          )
+        )
+      )
         .to.be.an('array')
-        .that.not.includes(EasternEurope)
-        .not.includes(MiddleAfrica)
+        .that.not.include.members([EasternEurope, MiddleAfrica])
     })
   })
-
-  describe('Can perform multiply filters', () => {
+  describe('Can filter by correctly combining multiply includes/excludes', () => {
     it(
-      'Should return countries within Europe and Africa ' +
-        'but outside of Eastern Europe and Middle Africa ' +
-        'which ISOa2 codes are not equal to IT, ES and FR',
+      'Must return countries located in Europe and Africa, ' +
+        'not in Eastern Europe or Middle Africa, ' +
+        'with iso-3166 alpha-2 codes not equal to IT, ES or FR',
       () => {
         const filtered = countries
           .include('region', [Europe, Africa])
           .exclude('subregion', [EasternEurope, MiddleAfrica])
-          .exclude('isoA2', ['IT', 'ES', 'FR'])
-        const codes = filtered.all.map(v => v.isoA2)
-        const regions = Array.from(new Set(filtered.all.map(v => v.region)))
-        const subregions = Array.from(
-          new Set(filtered.all.map(v => v.subregion))
-        )
-        expect(codes)
-          .to.be.an('array')
-          .that.not.includes('IT')
-          .not.includes('ES')
-          .not.includes('FR')
+          .exclude('isoA2', ['IT', 'ES', 'FR']).all
+        const regions = Array.from(new Set(filtered.map(v => v.region)))
+        const subregions = Array.from(new Set(filtered.map(v => v.subregion)))
+        const isoA2Codes = filtered.map(v => v.isoA2)
         expect(regions)
           .to.be.an('array')
-          .that.includes(Europe)
-          .includes(Africa)
+          .that.include.members([Europe, Africa])
         expect(subregions)
           .to.be.an('array')
-          .that.not.includes(EasternEurope)
-          .not.includes(MiddleAfrica)
+          .that.not.include.members([EasternEurope, MiddleAfrica])
+        expect(isoA2Codes)
+          .to.be.an('array')
+          .that.not.include.members(['IT', 'ES', 'FR'])
       }
     )
   })
-
-  describe('Can not filter outside of the set', () => {
-    it("Will fail since set don't have an expected values", () => {
+  describe('Can not filter by including/excluding values outside the set', () => {
+    it('Must fail, since the subset does not include US', () => {
       expect(() => {
-        countries
-          .include('region', [Europe])
-          .include('isoA2', ['US', 'AR', 'CL'])
+        countries.include('region', [Europe]).include('isoA2', ['US'])
       }).to.throw()
     })
   })
-
-  describe('Can not filter by invalid region', () => {
-    it("Will fail since set don't have an expected values", () => {
+  describe('Can not filter by using incorrect region values', () => {
+    it('Must fail, sice "Space" is not a region of the planet Earth', () => {
       expect(() => {
         countries.include('region', ['Space'])
       }).to.throw()
     })
   })
-
-  describe('Can not filter by invalid subregion', () => {
-    it("Will fail since set don't have an expected values", () => {
+  describe('Can not filter by using incorrect subregion values', () => {
+    it('Must fail, since "Death Star" is not a subregion of planet Earth', () => {
       expect(() => {
-        countries.include('subregion', ['Space and Time'])
+        countries.include('subregion', ['Death Star'])
       }).to.throw()
     })
   })
-
-  describe('Can not filter by invalid isoA2', () => {
-    it("Will fail since set don't have an expected values", () => {
+  describe('Can not filter by using incorrect iso-3166 alpha-2 code', () => {
+    it('Must fail, since XX is not a correct iso-3166 alpha-2 code', () => {
       expect(() => {
         countries.include('isoA2', ['XX'])
       }).to.throw()
     })
   })
-
-  describe('Can not filter by invalid isoA3', () => {
-    it("Will fail since set don't have an expected values", () => {
+  describe('Can not filter by using incorrect iso-3166 alpha-3 code', () => {
+    it('Must fail, since XXX is not a correct iso-3166 alpha-3 code', () => {
       expect(() => {
         countries.include('isoA3', ['XXX'])
       }).to.throw()
     })
   })
-
-  describe('Can not filter by invalid isoN3', () => {
-    it("Will fail since set don't have an expected values", () => {
+  describe('Can not filter by using incorrect iso-3166 numeric code', () => {
+    it('Must fail, since 000 is not a correct iso-3166 numeric code', () => {
       expect(() => {
         countries.include('isoN3', ['000'])
       }).to.throw()
